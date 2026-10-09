@@ -1,6 +1,15 @@
 // Переводы черновые — казахский текст рекомендуется проверить носителем перед запуском.
 const fmt = (n) => n.toLocaleString('ru-RU');
 
+function ruPlural(n, one, few, many) {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 14) return many;
+  if (mod10 === 1) return one;
+  if (mod10 >= 2 && mod10 <= 4) return few;
+  return many;
+}
+
 export const translations = {
   ru: {
     nav: { services: 'Услуги', fleet: 'Автопарк', reviews: 'Отзывы' },
@@ -18,7 +27,6 @@ export const translations = {
       hint: 'Выберите, что везём — цену увидите сразу',
       cargoLabel: 'Что перевозим',
       loadersLabel: 'Нужны грузчики',
-      loaders: ['Без грузчиков', '1 грузчик', '2 грузчика', '3 грузчика'],
       resultHint: 'Точная цена фиксируется в WhatsApp перед выездом',
       waButton: 'Отправить в WhatsApp',
       manualTitle: 'Нужен индивидуальный расчёт',
@@ -60,9 +68,17 @@ export const translations = {
     reviews: { title: 'Отзывы', placeholder: 'Здесь появятся отзывы первых клиентов GRUZART.' },
     finalCta: { title: 'Нужно перевезти? GRUZART сделает это за вас.', button: 'Рассчитать стоимость' },
     footer: { copyright: '© GRUZART, Астана', privacy: 'Политика конфиденциальности' },
+    privacy: {
+      title: 'Политика конфиденциальности',
+      home: 'На главную',
+      back: '← На главную',
+      pendingNotice:
+        'Юридический текст на этой странице пока только на русском — казахский перевод добавим после проверки юристом.',
+    },
     common: {
       hourlyFrom: (price) => `от ${fmt(price)} ₸/ч`,
       resultPrice: (price) => `≈ ${fmt(price)} ₸`,
+      loaderLabel: (n) => (n === 0 ? 'Без грузчиков' : `${n} ${ruPlural(n, 'грузчик', 'грузчика', 'грузчиков')}`),
       resultMeta: (vehicleName, hours, loaders) =>
         `${vehicleName}, ${hours} ч${loaders ? ', ' + loaders + ' груз.' : ''}`,
       waOrder: (cargoName, vehicleName, price) =>
@@ -86,7 +102,6 @@ export const translations = {
       hint: 'Не тасымалдайтыныңызды таңдаңыз — бағасы бірден көрінеді',
       cargoLabel: 'Не тасымалдаймыз',
       loadersLabel: 'Жүк тасушылар қажет пе',
-      loaders: ['Жүк тасушыларсыз', '1 жүк тасушы', '2 жүк тасушы', '3 жүк тасушы'],
       resultHint: 'Нақты баға шығу алдында WhatsApp-та бекітіледі',
       waButton: 'WhatsApp-қа жіберу',
       manualTitle: 'Жеке есептеу қажет',
@@ -128,9 +143,17 @@ export const translations = {
     reviews: { title: 'Пікірлер', placeholder: 'Мұнда GRUZART-тың алғашқы клиенттерінің пікірлері пайда болады.' },
     finalCta: { title: 'Тасымалдау керек пе? GRUZART бұны сіз үшін жасайды.', button: 'Бағасын есептеу' },
     footer: { copyright: '© GRUZART, Астана', privacy: 'Құпиялық саясаты' },
+    privacy: {
+      title: 'Құпиялық саясаты',
+      home: 'Басты бетке',
+      back: '← Басты бетке',
+      pendingNotice:
+        'Бұл беттегі заңды мәтін қазірше тек орыс тілінде — қазақша аудармасын заңгер тексерісінен кейін қосамыз.',
+    },
     common: {
       hourlyFrom: (price) => `${fmt(price)} ₸/сағ-тан`,
       resultPrice: (price) => `≈ ${fmt(price)} ₸`,
+      loaderLabel: (n) => (n === 0 ? 'Жүк тасушыларсыз' : `${n} жүк тасушы`),
       resultMeta: (vehicleName, hours, loaders) =>
         `${vehicleName}, ${hours} сағ${loaders ? ', ' + loaders + ' жүк тас.' : ''}`,
       waOrder: (cargoName, vehicleName, price) =>

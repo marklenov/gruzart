@@ -23,7 +23,8 @@ a { text-decoration: none; color: inherit; }
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
 
 /* header */
-.site-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.site-header { padding: 22px 0; border-bottom: 1px solid var(--border); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; }
 .logo { font-weight: 800; font-size: 20px; letter-spacing: .01em; }
 .logo span { color: var(--amber-deep); }
 .nav { display: flex; gap: 28px; font-size: 14.5px; font-weight: 500; color: #4b4b52; list-style: none; margin: 0; padding: 0; }

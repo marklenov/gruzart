@@ -11,21 +11,28 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+    <div class="wrap">
       <div class="logo">GRUZ<span>ART</span></div>
-      <a class="cta-btn" href="index.html">На главную</a>
+      <div class="header-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="ru">РУС</button>
+          <button class="lang-btn" data-lang="kk">ҚАЗ</button>
+        </div>
+        <a class="cta-btn" href="index.html" data-i18n="privacy.home"></a>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
     <div class="legal">
-      <a class="back-link" href="index.html">← На главную</a>
-      <h1>Политика конфиденциальности</h1>
+      <a class="back-link" href="index.html" data-i18n="privacy.back"></a>
+      <h1 data-i18n="privacy.title"></h1>
 
       <div class="todo-note">
         ТОДО перед запуском: реквизиты ниже — плейсхолдер (придуманы для черновика). Замените на реальные
         данные ИП/ТОО и проверьте весь текст у юриста, прежде чем публиковать сайт.
       </div>
+      <div class="todo-note" data-i18n="privacy.pendingNotice"></div>
 
       <p>Настоящая политика описывает, как GRUZART обрабатывает данные посетителей сайта gruzart.kz.</p>
 
@@ -62,8 +69,28 @@
   </main>
 
   <footer class="site-footer wrap">
-    <span>© GRUZART, Астана</span>
-    <a href="index.html">На главную</a>
+    <span data-i18n="footer.copyright"></span>
+    <a href="index.html" data-i18n="privacy.home"></a>
   </footer>
+
+  <script type="module">
+    import { getLanguage, setLanguage, applyStaticText } from './assets/js/i18n.js';
+
+    function render(lang) {
+      applyStaticText(lang);
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+        render(btn.dataset.lang);
+      });
+    });
+
+    render(getLanguage());
+  </script>
 </body>
 </html>
