@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GRUZART — грузоперевозки в Астане</title>
+<meta name="description" content="Грузоперевозки на газели, грузчики и доп. услуги в Астане. Умный калькулятор — цена видна заранее." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+      <div class="logo">GRUZ<span>ART</span></div>
+      <ul class="nav">
+        <li><a href="#fleet" data-i18n="nav.fleet"></a></li>
+        <li><a href="#services" data-i18n="nav.services"></a></li>
+        <li><a href="#reviews" data-i18n="nav.reviews"></a></li>
+      </ul>
+      <div class="header-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="ru">РУС</button>
+          <button class="lang-btn" data-lang="kk">ҚАЗ</button>
+        </div>
+        <a class="call-link" data-tel-link data-i18n="header.call"></a>
+        <a class="cta-btn" href="#calc" data-i18n="header.calc"></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+        <h1><span data-i18n="hero.titleLine1"></span><br><span data-i18n="hero.titleLine2"></span></h1>
+        <p class="lede" data-i18n="hero.lede"></p>
+        <div class="hero-ctas">
+          <a class="btn-primary" data-tel-link data-i18n="hero.ctaCall"></a>
+          <a class="btn-ghost" href="#fleet" data-i18n="hero.ctaFleet"></a>
+        </div>
+      </div>
+
+      <div class="calc-card" id="calc">
+        <h3 data-i18n="calc.title"></h3>
+        <p class="hint" data-i18n="calc.hint"></p>
+        <div class="calc-field">
+          <label data-i18n="calc.cargoLabel"></label>
+          <select id="cargo-select"></select>
+        </div>
+        <div class="calc-field">
+          <label data-i18n="calc.loadersLabel"></label>
+          <select id="loaders-select"></select>
+        </div>
+        <div class="calc-result">
+          <div class="price" id="calc-result">—</div>
+          <div class="meta" id="calc-result-meta"></div>
+        </div>
+        <a class="wa-btn" id="calc-wa-btn" target="_blank" rel="noopener">
+          <span>💬</span><span data-i18n="calc.waButton"></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section wrap" id="fleet">
+      <h2 data-i18n="fleet.title"></h2>
+      <p class="sub" data-i18n="fleet.sub"></p>
+      <div class="fleet-grid" id="fleet-grid"></div>
+    </section>
+
+    <section class="section wrap" id="services">
+      <h2 data-i18n="services.title"></h2>
+      <p class="sub" data-i18n="services.sub"></p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="ico">🚚</div>
+          <h4 data-i18n="services.transportTitle"></h4>
+          <p data-i18n="services.transportBody"></p>
+        </div>
+        <div class="service-card">
+          <div class="ico">👷</div>
+          <h4 data-i18n="services.loadersTitle"></h4>
+          <p data-i18n="services.loadersBody"></p>
+        </div>
+        <div class="service-card">
+          <div class="ico">📦</div>
+          <h4 data-i18n="services.extraTitle"></h4>
+          <p data-i18n="services.extraBody"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <h2 data-i18n="trust.title"></h2>
+      <ul class="trust-list" id="trust-list"></ul>
+    </section>
+
+    <section class="section wrap" id="reviews">
+      <h2 data-i18n="reviews.title"></h2>
+      <div class="reviews-placeholder" data-i18n="reviews.placeholder"></div>
+    </section>
+
+    <section class="final-cta">
+      <h2 data-i18n="finalCta.title"></h2>
+      <a class="wa-btn" href="#calc" data-i18n="finalCta.button"></a>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <span data-i18n="footer.copyright"></span>
+    <a href="privacy.html" data-i18n="footer.privacy"></a>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

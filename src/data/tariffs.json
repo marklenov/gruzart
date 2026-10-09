@@ -1,0 +1,69 @@
+{
+  "_comment": "Черновик. Все цифры — плейсхолдеры для обсуждения, не реальные тарифы. Правьте свободно.",
+  "city": "Астана",
+  "whatsapp": "+77472342353",
+  "vehicleClasses": [
+    {
+      "code": "minivan",
+      "name": "Минивэн",
+      "approxDimensions": "~2.5 м кузов, до 4-5 м³, до 1 т",
+      "hourlyRate": 3500
+    },
+    {
+      "code": "gazelle_standard",
+      "name": "Газель",
+      "approxDimensions": "~3 м кузов, до 12-14 м³, до 1.5 т",
+      "hourlyRate": 6000
+    },
+    {
+      "code": "gazelle_long",
+      "name": "Газель увеличенная (4.2 м)",
+      "approxDimensions": "~4.2 м кузов, до 18-20 м³, до 2 т",
+      "hourlyRate": 9000
+    },
+    {
+      "code": "truck",
+      "name": "Грузовик",
+      "approxDimensions": "~5 м кузов, до 30+ м³, до 5 т",
+      "hourlyRate": 13000
+    }
+  ],
+  "cargoCategories": [
+    {
+      "code": "few_boxes",
+      "name": "Несколько коробок / мелкий груз",
+      "suggestedVehicle": "minivan",
+      "estimatedHours": 1
+    },
+    {
+      "code": "one_room",
+      "name": "1 комната",
+      "suggestedVehicle": "gazelle_standard",
+      "estimatedHours": 2
+    },
+    {
+      "code": "two_rooms",
+      "name": "2 комнаты",
+      "suggestedVehicle": "gazelle_standard",
+      "estimatedHours": 3
+    },
+    {
+      "code": "three_plus_or_office",
+      "name": "3+ комнат / офис",
+      "suggestedVehicle": "gazelle_long",
+      "estimatedHours": 4
+    },
+    {
+      "code": "commercial",
+      "name": "Коммерческий груз",
+      "suggestedVehicle": "truck",
+      "estimatedHours": null,
+      "note": "Слишком разный груз для оценки — сразу ведём в WhatsApp без расчёта"
+    }
+  ],
+  "loaders": {
+    "pricePerHour": 2500,
+    "maxCount": 3
+  },
+  "minBillableHours": 2
+}
