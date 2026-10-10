@@ -76,6 +76,7 @@ a { text-decoration: none; color: inherit; }
 /* hero photo background (ночное фото автопарка на фоне Астаны) */
 .hero-photo {
   position: relative;
+  margin: 28px 0;
   background: url('../img/hero-night-truck.webp') center/cover no-repeat;
 }
 .hero-photo::before {
