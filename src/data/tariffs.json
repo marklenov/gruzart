@@ -42,6 +42,12 @@
       "estimatedHours": 2
     },
     {
+      "code": "disposal",
+      "name": "Утилизация старой техники и мебели",
+      "suggestedVehicle": "gazelle_standard",
+      "estimatedHours": 2
+    },
+    {
       "code": "one_room",
       "name": "1 комната",
       "suggestedVehicle": "gazelle_standard",
