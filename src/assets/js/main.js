@@ -128,6 +128,32 @@ function initCalculatorEvents() {
   document.getElementById('loaders-select').addEventListener('change', () => updateCalculator(getLanguage()));
 }
 
+// Декоративные падающие листья в хиро — чисто CSS-анимация, JS только расставляет случайные параметры.
+function initAutumnLeaves() {
+  const hero = document.querySelector('.hero');
+  const zone = document.querySelector('.leaves-zone');
+  if (!hero || !zone) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const fallDistance = hero.offsetHeight + 60;
+  const COUNT = 12;
+  for (let i = 0; i < COUNT; i++) {
+    const leaf = document.createElement('span');
+    leaf.className = `leaf leaf-${(i % 4) + 1}`;
+    const duration = 9 + Math.random() * 7;
+    const delay = -Math.random() * duration;
+    const size = 12 + Math.random() * 10;
+    const drift = Math.round(Math.random() * 60 - 30);
+    leaf.style.left = `${Math.random() * 100}%`;
+    leaf.style.setProperty('--fall', `${fallDistance}px`);
+    leaf.style.setProperty('--duration', `${duration}s`);
+    leaf.style.setProperty('--delay', `${delay}s`);
+    leaf.style.setProperty('--size', `${size}px`);
+    leaf.style.setProperty('--drift', `${drift}px`);
+    zone.appendChild(leaf);
+  }
+}
+
 async function init() {
   const res = await fetch('data/tariffs.json');
   tariffs = await res.json();
@@ -137,6 +163,7 @@ async function init() {
   });
   initLanguageToggle();
   initCalculatorEvents();
+  initAutumnLeaves();
   renderAll(getLanguage());
 }
 
