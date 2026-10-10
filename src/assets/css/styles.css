@@ -159,6 +159,12 @@ a { text-decoration: none; color: inherit; }
   .fleet-grid, .services-grid { grid-template-columns: repeat(2, 1fr); }
   .trust-list { grid-template-columns: 1fr; }
   .nav { display: none; }
+  .hero-photo {
+    background-size: auto 360px;
+    background-position: 68% top;
+    background-repeat: no-repeat;
+    background-color: #12121a;
+  }
 }
 
 @media (max-width: 480px) {
