@@ -69,8 +69,9 @@ a { text-decoration: none; color: inherit; }
 .vehicle-card { background: var(--paper-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; text-align: center; }
 .vehicle-card svg { margin: 0 auto 12px; width: 100%; max-width: 128px; height: auto; display: block; }
 .van-body { fill: var(--amber); stroke: var(--ink); stroke-width: 3; }
-.van-box { fill: var(--ink); stroke: var(--ink); stroke-width: 3; }
-.van-tent { fill: #d8c9a3; stroke: var(--ink); stroke-width: 3; }
+.van-box { fill: #e9e6dd; stroke: var(--ink); stroke-width: 3; }
+.van-tent { fill: #4a6b8a; stroke: var(--ink); stroke-width: 3; }
+.van-tent-long { fill: #33475a; stroke: var(--ink); stroke-width: 3; }
 .van-window { fill: #eef1f3; stroke: var(--ink); stroke-width: 2; }
 .van-rib { stroke: var(--ink); stroke-width: 2; opacity: .5; }
 .van-stripe-flat { fill: var(--amber); }
