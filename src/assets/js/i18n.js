@@ -41,6 +41,7 @@ export const translations = {
     },
     cargo: {
       few_boxes: 'Несколько коробок',
+      appliances: 'Бытовая техника',
       one_room: '1 комната',
       two_rooms: '2 комнаты',
       three_plus_or_office: '3+ комнат / офис',
@@ -116,6 +117,7 @@ export const translations = {
     },
     cargo: {
       few_boxes: 'Бірнеше қорап',
+      appliances: 'Тұрмыстық техника',
       one_room: '1 бөлме',
       two_rooms: '2 бөлме',
       three_plus_or_office: '3+ бөлме / офис',

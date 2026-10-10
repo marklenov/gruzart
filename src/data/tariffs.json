@@ -36,6 +36,12 @@
       "estimatedHours": 1
     },
     {
+      "code": "appliances",
+      "name": "Бытовая техника",
+      "suggestedVehicle": "gazelle_standard",
+      "estimatedHours": 2
+    },
+    {
       "code": "one_room",
       "name": "1 комната",
       "suggestedVehicle": "gazelle_standard",
