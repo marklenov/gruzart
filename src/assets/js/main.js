@@ -21,7 +21,7 @@ function renderFleet(lang) {
   grid.innerHTML = tariffs.vehicleClasses
     .map((v) => {
       const label = dict.vehicles[v.code] ?? { name: v.name, dims: v.approxDimensions };
-      return `<div class="vehicle-card">
+      return `<div class="vehicle-card" data-reveal>
         <img class="van-photo" src="assets/img/fleet/${v.code}.webp" alt="${label.name}" loading="lazy" width="320" height="175">
         <h4>${label.name}</h4>
         <div class="dims">${label.dims}</div>
@@ -34,7 +34,7 @@ function renderFleet(lang) {
 function renderTrust(lang) {
   const dict = translations[lang];
   document.getElementById('trust-list').innerHTML = dict.trust.items
-    .map((item) => `<li>${item}</li>`)
+    .map((item) => `<li data-reveal>${item}</li>`)
     .join('');
 }
 
@@ -80,6 +80,27 @@ function updateCalculator(lang) {
   waBtn.href = waLink(dict.common.waOrder(cargoLabel, vehicleLabel, result.price));
 }
 
+// Плавно показывает элементы с [data-reveal], когда они входят в область видимости при скролле.
+function initScrollReveal() {
+  const items = document.querySelectorAll('[data-reveal]:not(.is-visible)');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+  );
+  items.forEach((el) => observer.observe(el));
+}
+
 function renderAll(lang) {
   applyStaticText(lang);
   renderFleet(lang);
@@ -90,6 +111,7 @@ function renderAll(lang) {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
+  initScrollReveal();
 }
 
 function initLanguageToggle() {
