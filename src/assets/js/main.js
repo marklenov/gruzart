@@ -1,5 +1,6 @@
 import { calculatePrice } from './pricing.js';
 import { translations, getLanguage, setLanguage, applyStaticText } from './i18n.js';
+import { vehicleIconSvg } from './vehicle-icons.js';
 
 let tariffs = null;
 
@@ -7,22 +8,6 @@ function waLink(text) {
   const digits = tariffs.whatsapp.replace(/\D/g, '');
   return `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
 }
-
-const VAN_ICON_SCALE = {
-  // одна абстрактная силуэт-форма кузова, масштаб разный по классу — временная иллюстрация,
-  // финальную графику под каждый класс транспорта делаем отдельной задачей
-  minivan: 0.68,
-  gazelle_standard: 0.84,
-  gazelle_long: 1.0,
-  truck: 1.2,
-};
-
-const VAN_SVG_INNER =
-  '<path d="M10 70 L10 40 Q10 30 22 30 L70 30 L95 10 L170 10 Q182 10 182 25 L182 70" ' +
-  'stroke-linejoin="round" stroke-linecap="round"/>' +
-  '<line x1="10" y1="70" x2="182" y2="70"/>' +
-  '<circle cx="48" cy="74" r="12" fill="currentColor" stroke="none"/>' +
-  '<circle cx="152" cy="74" r="12" fill="currentColor" stroke="none"/>';
 
 // Перерисовывает <select> новым списком опций, сохраняя выбранное значение (или ставя fallback).
 function renderSelectOptions(select, options, fallbackValue) {
@@ -37,9 +22,8 @@ function renderFleet(lang) {
   grid.innerHTML = tariffs.vehicleClasses
     .map((v) => {
       const label = dict.vehicles[v.code] ?? { name: v.name, dims: v.approxDimensions };
-      const scale = VAN_ICON_SCALE[v.code] ?? 1;
       return `<div class="vehicle-card">
-        <svg class="van-icon" viewBox="0 0 200 90" style="width:${Math.round(72 * scale)}px;height:${Math.round(34 * scale)}px">${VAN_SVG_INNER}</svg>
+        ${vehicleIconSvg(v.code)}
         <h4>${label.name}</h4>
         <div class="dims">${label.dims}</div>
         <div class="rate">${dict.common.hourlyFrom(v.hourlyRate)}</div>
