@@ -55,10 +55,46 @@ function renderLoaderOptions(lang) {
   renderSelectOptions(select, options, '0');
 }
 
+// Чек-лист вещей для категории "Утилизация" — сохраняет отмеченные пункты при перерисовке.
+function renderDisposalItems(lang) {
+  const dict = translations[lang];
+  const list = document.getElementById('disposal-items-list');
+  const checked = new Set(
+    Array.from(list.querySelectorAll('input:checked')).map((input) => input.value),
+  );
+  list.innerHTML = tariffs.disposalItems
+    .map((item) => {
+      const label = dict.disposalItems[item.code] ?? item.name;
+      const isChecked = checked.has(item.code) ? 'checked' : '';
+      return `<label class="checkbox-item">
+        <input type="checkbox" value="${item.code}" class="disposal-item-checkbox" ${isChecked}>
+        ${label}
+      </label>`;
+    })
+    .join('');
+  list.querySelectorAll('.disposal-item-checkbox').forEach((input) => {
+    input.addEventListener('change', () => updateCalculator(getLanguage()));
+  });
+}
+
+function getCheckedDisposalLabels(lang) {
+  const dict = translations[lang];
+  return Array.from(document.querySelectorAll('.disposal-item-checkbox:checked')).map((input) => {
+    const item = tariffs.disposalItems.find((i) => i.code === input.value);
+    return dict.disposalItems[input.value] ?? item?.name ?? input.value;
+  });
+}
+
 function updateCalculator(lang) {
   const dict = translations[lang];
   const cargoCode = document.getElementById('cargo-select').value;
-  const loaderCount = parseInt(document.getElementById('loaders-select').value, 10) || 0;
+  const isDisposal = cargoCode === 'disposal';
+  const loadersField = document.getElementById('loaders-field');
+  const disposalField = document.getElementById('disposal-items-field');
+  loadersField.hidden = isDisposal;
+  disposalField.hidden = !isDisposal;
+
+  const loaderCount = isDisposal ? 0 : parseInt(document.getElementById('loaders-select').value, 10) || 0;
   const resultEl = document.getElementById('calc-result');
   const metaEl = document.getElementById('calc-result-meta');
   const waBtn = document.getElementById('calc-wa-btn');
@@ -73,11 +109,18 @@ function updateCalculator(lang) {
   }
 
   const vehicleLabel = dict.vehicles[result.vehicle.code]?.name ?? result.vehicle.name;
-  const cargoLabel = dict.cargo[result.category.code] ?? result.category.name;
 
   resultEl.textContent = dict.common.resultPrice(result.price);
   metaEl.textContent = dict.common.resultMeta(vehicleLabel, result.hours, result.loaders);
-  waBtn.href = waLink(dict.common.waOrder(cargoLabel, vehicleLabel, result.price));
+
+  if (isDisposal) {
+    const itemLabels = getCheckedDisposalLabels(lang);
+    const itemsText = itemLabels.length ? itemLabels.join(', ') : dict.calc.disposalNoneSelected;
+    waBtn.href = waLink(dict.common.waDisposal(itemsText, vehicleLabel, result.price));
+  } else {
+    const cargoLabel = dict.cargo[result.category.code] ?? result.category.name;
+    waBtn.href = waLink(dict.common.waOrder(cargoLabel, vehicleLabel, result.price));
+  }
 }
 
 // Плавно показывает элементы с [data-reveal], когда они входят в область видимости при скролле.
@@ -107,6 +150,7 @@ function renderAll(lang) {
   renderTrust(lang);
   renderCargoOptions(lang);
   renderLoaderOptions(lang);
+  renderDisposalItems(lang);
   updateCalculator(lang);
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === lang);

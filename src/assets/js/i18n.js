@@ -31,6 +31,9 @@ export const translations = {
       waButton: 'Отправить в WhatsApp',
       manualTitle: 'Нужен индивидуальный расчёт',
       manualHint: 'Напишите параметры в WhatsApp — ответим в течение рабочего дня',
+      disposalItemsLabel: 'Что утилизируем',
+      disposalOtherHint: 'Другое не в списке? Напишите прямо в заявке в WhatsApp.',
+      disposalNoneSelected: 'уточню в WhatsApp',
     },
     fleet: { title: 'Автопарк', sub: 'Берём машину с запасом — лишнее не оплачивается' },
     vehicles: {
@@ -47,6 +50,13 @@ export const translations = {
       two_rooms: '2 комнаты',
       three_plus_or_office: '3+ комнат / офис',
       commercial: 'Коммерческий груз',
+    },
+    disposalItems: {
+      mattress: 'Матрас',
+      washing_machine: 'Стиральная машина',
+      fridge: 'Холодильник',
+      bed_assembled: 'Кровать (разобрать при приезде)',
+      bed_disassembled: 'Кровать (уже разобрана)',
     },
     services: {
       title: 'Что входит в заявку',
@@ -86,6 +96,8 @@ export const translations = {
       waOrder: (cargoName, vehicleName, price) =>
         `Здравствуйте! Хочу заказать: ${cargoName}, ${vehicleName}, ориентировочно ${fmt(price)} ₸.`,
       waManual: () => 'Здравствуйте! Хочу уточнить стоимость перевозки коммерческого груза.',
+      waDisposal: (itemsText, vehicleName, price) =>
+        `Здравствуйте! Хочу утилизировать: ${itemsText}. Ориентировочно ${fmt(price)} ₸ (${vehicleName}).`,
     },
   },
   kk: {
@@ -108,6 +120,9 @@ export const translations = {
       waButton: 'WhatsApp-қа жіберу',
       manualTitle: 'Жеке есептеу қажет',
       manualHint: 'Параметрлерді WhatsApp-қа жазыңыз — жұмыс күні ішінде жауап береміз',
+      disposalItemsLabel: 'Нені утилизациялаймыз',
+      disposalOtherHint: 'Тізімде жоғы бар ма? WhatsApp-тағы өтінімде жазыңыз.',
+      disposalNoneSelected: 'WhatsApp-та нақтылаймын',
     },
     fleet: { title: 'Автопарк', sub: 'Көлікті қорымен аламыз — артығына төлемейсіз' },
     vehicles: {
@@ -124,6 +139,13 @@ export const translations = {
       two_rooms: '2 бөлме',
       three_plus_or_office: '3+ бөлме / офис',
       commercial: 'Коммерциялық жүк',
+    },
+    disposalItems: {
+      mattress: 'Матрас',
+      washing_machine: 'Кір жуғыш машина',
+      fridge: 'Тоңазытқыш',
+      bed_assembled: 'Кереует (келгенде бөлшектеу керек)',
+      bed_disassembled: 'Кереует (бөлшектелген)',
     },
     services: {
       title: 'Өтінімге не кіреді',
@@ -163,6 +185,8 @@ export const translations = {
       waOrder: (cargoName, vehicleName, price) =>
         `Сәлеметсіз бе! Тапсырыс беруді қалаймын: ${cargoName}, ${vehicleName}, болжам бойынша ${fmt(price)} ₸.`,
       waManual: () => 'Сәлеметсіз бе! Коммерциялық жүк тасымалының құнын нақтылағым келеді.',
+      waDisposal: (itemsText, vehicleName, price) =>
+        `Сәлеметсіз бе! Утилизациялауды қалаймын: ${itemsText}. Болжам бойынша ${fmt(price)} ₸ (${vehicleName}).`,
     },
   },
 };
