@@ -20,7 +20,7 @@ img, svg { display: block; max-width: 100%; }
 button { font-family: inherit; cursor: pointer; }
 a { text-decoration: none; color: inherit; }
 
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }
 
 /* header */
 .site-header { padding: 22px 0; border-bottom: 1px solid var(--border); }
@@ -168,7 +168,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 480px) {
-  .wrap { padding: 0 16px; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
   .hero h1 { font-size: 34px; }
   .header-actions { gap: 6px; }
   .call-link { display: none; }
