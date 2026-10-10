@@ -1,6 +1,5 @@
 import { calculatePrice } from './pricing.js';
 import { translations, getLanguage, setLanguage, applyStaticText } from './i18n.js';
-import { vehicleIconSvg } from './vehicle-icons.js';
 
 let tariffs = null;
 
@@ -23,7 +22,7 @@ function renderFleet(lang) {
     .map((v) => {
       const label = dict.vehicles[v.code] ?? { name: v.name, dims: v.approxDimensions };
       return `<div class="vehicle-card">
-        ${vehicleIconSvg(v.code)}
+        <img class="van-photo" src="assets/img/fleet/${v.code}.webp" alt="${label.name}" loading="lazy" width="320" height="175">
         <h4>${label.name}</h4>
         <div class="dims">${label.dims}</div>
         <div class="rate">${dict.common.hourlyFrom(v.hourlyRate)}</div>
