@@ -108,6 +108,51 @@ a { text-decoration: none; color: inherit; }
 .wa-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--amber); color: var(--ink); font-weight: 800; padding: 14px; border-radius: 12px; font-size: 15px; }
 .wa-btn:hover { background: var(--amber-deep); color: #fff; }
 
+/* floating contact panel */
+.sticky-contact {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%) translateY(140%);
+  z-index: 50;
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+  transition: transform .3s ease;
+}
+.sticky-contact.is-visible { transform: translateX(-50%) translateY(0); }
+.sticky-contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.sticky-call { background: var(--ink); color: #fff; }
+.sticky-wa { background: var(--amber); color: var(--ink); }
+.sticky-wa:hover { background: var(--amber-deep); color: #fff; }
+@media (max-width: 480px) {
+  .sticky-contact {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, .12);
+    padding: 10px 12px;
+    transform: translateY(140%);
+  }
+  .sticky-contact.is-visible { transform: translateY(0); }
+  .sticky-contact-btn { flex: 1; padding: 12px; }
+}
+
 /* generic section */
 .section { padding: 56px 0; }
 .section h2 { font-size: 28px; font-weight: 800; margin: 0 0 8px; }

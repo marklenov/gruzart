@@ -144,6 +144,12 @@ function initScrollReveal() {
   items.forEach((el) => observer.observe(el));
 }
 
+function updateStickyContact(lang) {
+  const waBtn = document.getElementById('sticky-wa-btn');
+  if (!waBtn) return;
+  waBtn.href = waLink(translations[lang].common.waGeneral());
+}
+
 function renderAll(lang) {
   applyStaticText(lang);
   renderFleet(lang);
@@ -152,10 +158,31 @@ function renderAll(lang) {
   renderLoaderOptions(lang);
   renderDisposalItems(lang);
   updateCalculator(lang);
+  updateStickyContact(lang);
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   initScrollReveal();
+}
+
+// Показывает плавающую панель контактов, когда хиро (со своими кнопками) уже проскроллен.
+function initStickyContact() {
+  const panel = document.getElementById('sticky-contact');
+  const hero = document.querySelector('.hero-photo');
+  if (!panel) return;
+  if (!hero || !('IntersectionObserver' in window)) {
+    panel.classList.add('is-visible');
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        panel.classList.toggle('is-visible', !entry.isIntersecting);
+      });
+    },
+    { threshold: 0 },
+  );
+  observer.observe(hero);
 }
 
 function initLanguageToggle() {
@@ -208,6 +235,7 @@ async function init() {
   initLanguageToggle();
   initCalculatorEvents();
   initAutumnLeaves();
+  initStickyContact();
   renderAll(getLanguage());
 }
 

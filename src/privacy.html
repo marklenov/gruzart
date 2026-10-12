@@ -73,6 +73,13 @@
     <a href="index.html" data-i18n="privacy.home"></a>
   </footer>
 
+  <div class="sticky-contact is-visible" id="sticky-contact">
+    <a class="sticky-contact-btn sticky-call" href="tel:+77472342353" data-i18n="header.call"></a>
+    <a class="sticky-contact-btn sticky-wa" id="sticky-wa-btn" target="_blank" rel="noopener">
+      <span>💬</span> WhatsApp
+    </a>
+  </div>
+
   <script type="module">
     import { getLanguage, setLanguage, applyStaticText } from './assets/js/i18n.js';
 
@@ -89,6 +96,11 @@
         render(btn.dataset.lang);
       });
     });
+
+    const waBtn = document.getElementById('sticky-wa-btn');
+    if (waBtn) {
+      waBtn.href = `https://wa.me/77472342353?text=${encodeURIComponent('Здравствуйте! Хочу узнать стоимость перевозки.')}`;
+    }
 
     render(getLanguage());
   </script>

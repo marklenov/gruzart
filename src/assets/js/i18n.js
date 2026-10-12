@@ -96,6 +96,7 @@ export const translations = {
       waOrder: (cargoName, vehicleName, price) =>
         `Здравствуйте! Хочу заказать: ${cargoName}, ${vehicleName}, ориентировочно ${fmt(price)} ₸.`,
       waManual: () => 'Здравствуйте! Хочу уточнить стоимость перевозки коммерческого груза.',
+      waGeneral: () => 'Здравствуйте! Хочу узнать стоимость перевозки.',
       waDisposal: (itemsText, vehicleName, price) =>
         `Здравствуйте! Хочу утилизировать: ${itemsText}. Ориентировочно ${fmt(price)} ₸ (${vehicleName}).`,
     },
@@ -185,6 +186,7 @@ export const translations = {
       waOrder: (cargoName, vehicleName, price) =>
         `Сәлеметсіз бе! Тапсырыс беруді қалаймын: ${cargoName}, ${vehicleName}, болжам бойынша ${fmt(price)} ₸.`,
       waManual: () => 'Сәлеметсіз бе! Коммерциялық жүк тасымалының құнын нақтылағым келеді.',
+      waGeneral: () => 'Сәлеметсіз бе! Тасымалдау құнын білгім келеді.',
       waDisposal: (itemsText, vehicleName, price) =>
         `Сәлеметсіз бе! Утилизациялауды қалаймын: ${itemsText}. Болжам бойынша ${fmt(price)} ₸ (${vehicleName}).`,
     },
